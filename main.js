@@ -4,7 +4,7 @@ class RoleAnimator {
     constructor() {
         this.roles = [
             "I'm a Web Developer",
-            "I'm a Python Developer"
+            "I'm a Python Developer",
             "I'm a Tech Enthusiast"
         ];
         this.currentIndex = 0;
