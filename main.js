@@ -1,4 +1,4 @@
-// Role typing animation - only Web Developer & Data Analyst, centered, with modern "slide & fade" animation
+// Role typing animation - centered, with modern "slide & fade" animation
 
 class RoleAnimator {
     constructor() {
