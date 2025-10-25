@@ -89,6 +89,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Scroll-to-top button
+    const scrollTopBtn = document.getElementById('scrollTop');
+    if (scrollTopBtn) {
+        scrollTopBtn.addEventListener('click', () => {
+            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+        });
+    }
+
     // Add active class to navigation links on scroll
     window.addEventListener('scroll', function() {
         let current = '';
@@ -107,6 +116,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 link.classList.add('active');
             }
         });
+
+        // Toggle scroll-to-top visibility
+        if (scrollTopBtn) {
+            if (scrollY > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        }
     });
 
     // Also highlight on page load based on current hash
@@ -121,6 +139,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         if (!hash) {
             document.querySelector('.nav-menu a[href="#home"]').classList.add('active');
+        }
+
+        // Initial toggle for scroll-to-top
+        if (scrollTopBtn) {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
         }
     });
 

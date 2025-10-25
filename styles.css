@@ -1691,3 +1691,80 @@ textarea:focus {
 }
 @keyframes loading { 0%{left:-100%;} 100%{left:100%;} }
 @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+
+/* Hide footer columns and remove separator lines on tablets and mobiles */
+@media (max-width: 1024px) {
+  .footer-container {
+    display: none;
+  }
+  .footer {
+    border-top: none;   /* remove top border */
+  }
+  .footer-bottom {
+    padding-top: 10px;
+    margin-top: 0;
+  }
+}
+
+/* Scroll-to-top button */
+.scroll-top {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: 0.125rem solid #ffd700;
+    background: rgba(25,25,25,0.9);
+    color: #ffd700;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(0.5rem);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, background 0.3s, color 0.3s, border-color 0.3s;
+    z-index: 900;
+    cursor: pointer;
+}
+.scroll-top i {
+    font-size: 1rem;
+    line-height: 1;
+}
+.scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.scroll-top:hover {
+    background: #ffd700;
+    color: #000;
+    border-color: #ffd700;
+    transform: translateY(-0.125rem);
+    box-shadow: 0 10px 24px rgba(255, 215, 0, 0.2);
+}
+.scroll-top:focus {
+    outline: 2px solid #ffd700;
+    outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+    .scroll-top {
+        right: 1rem;
+        bottom: 1rem;
+        width: 2.75rem;
+        height: 2.75rem;
+    }
+}
+
+/* Hide in print */
+@media print {
+    .scroll-top { display: none; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .scroll-top {
+        transition: none;
+    }
+}
